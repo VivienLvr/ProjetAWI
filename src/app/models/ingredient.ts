@@ -1,15 +1,15 @@
-import { SSL_OP_ALLOW_UNSAFE_LEGACY_RENEGOTIATION } from "constants";
-
-enum IngredientType {
+export enum IngredientType {
     meat = 'Meat',
     vegetable = "Vegetable",
-    fruit = "Fruit"
+    fruit = "Fruit",
+    epicerie = "Epicerie"
 }
 
-enum Unit {
+export enum Unit {
     gramm = 'g',
     litre = 'l',
-    piece = 'Pièce'
+    piece = 'Pièce',
+    kg = 'kg'
 }
 
 export class Ingredient {
