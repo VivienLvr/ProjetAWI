@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "test-364b6": {
+      "hosting": {
+        "ProjetAWI": [
+          "test-364b6"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "test-364b6"
+  }
+}

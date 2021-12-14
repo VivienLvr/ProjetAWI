@@ -1,3 +1,10 @@
-<ul class="list-group">
-    <li *ngFor="let ingredient of ingredients" class="list-group-item">{{ ingredient.name }}</li>
-</ul>
+<div *ngIf="ingredients.length > 0;else noIngredients">
+    <ul class="list-group">
+        <li *ngFor="let ingredient of ingredients"  class="list-group-item">{{ ingredient.name }}</li>
+    </ul>
+</div>
+
+<ng-template #noIngredients>
+    <hr>
+    <h5>No ingredients to show</h5>
+</ng-template>

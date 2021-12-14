@@ -4,7 +4,17 @@
 
 export const environment = {
   production: false,
-  firebase:{
+  firebase: {
+    projectId: 'test-364b6',
+    appId: '1:59655052189:web:667327bdf69b687036ed74',
+    storageBucket: 'test-364b6.appspot.com',
+    locationId: 'europe-west',
+    apiKey: 'AIzaSyBoihnjZSknbwPPfPnh1D45O71lI1gjBC0',
+    authDomain: 'test-364b6.firebaseapp.com',
+    messagingSenderId: '59655052189',
+  }
+  
+  /*firebase:{
     apiKey: "AIzaSyBhaQ3L_oAybc0OWIJ_P2zOZXEjP9LPo6U",
     authDomain: "projet-awi-85acc.firebaseapp.com",
     databaseURL: "https://projet-awi-85acc-default-rtdb.europe-west1.firebasedatabase.app",
@@ -13,7 +23,7 @@ export const environment = {
     messagingSenderId: "257935858065",
     appId: "1:257935858065:web:f10cbdfdfed480cd67e230",
     measurementId: "G-RDLJ8NWV66"
-  }
+  }*/
 };
 
 /*
