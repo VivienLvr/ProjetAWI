@@ -13,12 +13,14 @@ import { environment } from '../environments/environment';
 import { IngredientService } from './services/ingredient.service';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { IngredientItemComponent } from './components/ingredients/ingredient-item/ingredient-item.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     routingComponents,
-    HeaderComponent
+    HeaderComponent,
+    IngredientItemComponent
   ],
   imports: [
     BrowserModule,
