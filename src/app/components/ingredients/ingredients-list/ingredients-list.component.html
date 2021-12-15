@@ -1,6 +1,8 @@
 <div *ngIf="ingredients.length > 0;else noIngredients">
     <ul class="list-group">
-        <li *ngFor="let ingredient of ingredients"  class="list-group-item">{{ ingredient.name }}</li>
+        <li *ngFor="let ingredient of ingredients"  class="list-group-item">
+            <app-ingredient-item [ingredient]="ingredient"></app-ingredient-item>
+        </li>
     </ul>
 </div>
 
