@@ -3,10 +3,17 @@
         <li *ngFor="let ingredient of ingredients"  class="list-group-item">
             <app-ingredient-item [ingredient]="ingredient"></app-ingredient-item>
         </li>
+        <app-ingredient-form class="list-group-item"></app-ingredient-form>
     </ul>
+
+<br>
 </div>
 
 <ng-template #noIngredients>
     <hr>
     <h5>No ingredients to show</h5>
 </ng-template>
+
+<div class="">
+    <button class="btn" id="btn-add" type="button">Ajouter un ingrédient</button>
+</div>

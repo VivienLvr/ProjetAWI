@@ -14,13 +14,15 @@ import { IngredientService } from './services/ingredient.service';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { IngredientItemComponent } from './components/ingredients/ingredient-item/ingredient-item.component';
+import { IngredientFormComponent } from './components/ingredients/ingredient-form/ingredient-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     routingComponents,
     HeaderComponent,
-    IngredientItemComponent
+    IngredientItemComponent,
+    IngredientFormComponent
   ],
   imports: [
     BrowserModule,

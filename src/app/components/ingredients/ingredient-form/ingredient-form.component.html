@@ -1,0 +1,49 @@
+<div class="container justify-content-md-center">
+    <h3 *ngIf="ingredient">Modifier l'ingrédient</h3>
+    <h3 *ngIf="!ingredient">Ajout d'un ingrédient</h3>
+    <form class="row g-3">
+        <div class="col-md-6">
+            <label for="inputEmail4" class="form-label">Nom</label>
+            <input type="text" class="form-control">
+        </div>
+        <div class="col-md-6">
+            <label for="inputPassword4" class="form-label">Stock</label>
+            <input type="number" class="form-control">
+        </div>
+        <div class="col-md-4">
+            <label for="inputState" class="form-label">Type</label>
+            <select id="inputState" class="form-select">
+                <option selected>Choisir...</option>
+                <option *ngFor="let type of types">{{ type }}</option>
+            </select>
+        </div>
+        <div class="col-md-4">
+            <label for="inputState" class="form-label">Unité</label>
+            <select id="inputState" class="form-select">
+                <option selected>Choisir...</option>
+                <option *ngFor="let unit of units">{{ unit }}</option>
+            </select>
+        </div>
+        <div class="col-md-3">
+            <label for="inputAddress" class="form-label">Prix unité</label>
+            <div style="display: inline-block">
+                <input type="number" class="form-control">
+                <span>€</span>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="gridCheck">
+                <label class="form-check-label">
+                    Alergène
+                </label>
+            </div>
+        </div>
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary">
+                <div *ngIf="!ingredient">Ajouter</div>
+                <div *ngIf="ingredient">Modifier</div>
+            </button>
+        </div>
+    </form>
+</div>

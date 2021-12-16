@@ -1,6 +1,6 @@
 export enum IngredientType {
-    meat = 'Meat',
-    vegetable = "Vegetable",
+    meat = 'Viande',
+    vegetable = "Légume",
     fruit = "Fruit",
     epicerie = "Epicerie"
 }
