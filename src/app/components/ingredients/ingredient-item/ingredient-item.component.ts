@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Ingredient } from 'src/app/models/ingredient';
 
 @Component({
@@ -8,9 +8,15 @@ import { Ingredient } from 'src/app/models/ingredient';
 })
 export class IngredientItemComponent implements OnInit {
   @Input() ingredient?: Ingredient;
+  @Output() modifyEvent: EventEmitter<Ingredient> = new EventEmitter<Ingredient>();
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  modify() {
+    console.log("Modify ingre : " + this.ingredient);
+    this.modifyEvent.emit(this.ingredient);
   }
 
 }

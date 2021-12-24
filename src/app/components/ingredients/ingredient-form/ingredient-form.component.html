@@ -1,39 +1,41 @@
 <div class="container justify-content-md-center">
     <h3 *ngIf="ingredient">Modifier l'ingrédient</h3>
     <h3 *ngIf="!ingredient">Ajout d'un ingrédient</h3>
-    <form class="row g-3">
+    <form class="row g-3" [formGroup]="ingredientGroup">
         <div class="col-md-6">
-            <label for="inputEmail4" class="form-label">Nom</label>
-            <input type="text" class="form-control">
+            <label for="name" class="form-label">Nom</label>
+            <input type="text" class="form-control" formControlName="name">
         </div>
-        <div class="col-md-6">
-            <label for="inputPassword4" class="form-label">Stock</label>
-            <input type="number" class="form-control">
+        <div class="col-md-4" style="position: rigth;">
+            <label for="stock" class="form-label">Stock</label>
+            <input type="number" class="form-control" formControlName="stock">
         </div>
         <div class="col-md-4">
-            <label for="inputState" class="form-label">Type</label>
-            <select id="inputState" class="form-select">
-                <option selected>Choisir...</option>
-                <option *ngFor="let type of types">{{ type }}</option>
+            <label for="category" class="form-label">Type</label>
+            <select class="form-select" formControlName="category">
+                <option>Choisir...</option>
+                <option *ngFor="let type of types" [selected]="this.categorySelected == type">{{ type }}</option>
             </select>
         </div>
         <div class="col-md-4">
-            <label for="inputState" class="form-label">Unité</label>
-            <select id="inputState" class="form-select">
-                <option selected>Choisir...</option>
-                <option *ngFor="let unit of units">{{ unit }}</option>
+            <label for="unit" class="form-label">Unité</label>
+            <select id="inputState" class="form-select" formControlName="unit">
+                <option>Choisir...</option>
+                <option *ngFor="let unit of units" [selected]="this.unitSelected == unit">{{ unit }}</option>
             </select>
         </div>
-        <div class="col-md-3">
-            <label for="inputAddress" class="form-label">Prix unité</label>
-            <div style="display: inline-block">
-                <input type="number" class="form-control">
-                <span>€</span>
+        <div class="col-md-4">
+            <label for="unitPrice" class="form-label">Prix unité</label>
+            <div class="input-group">
+                <input type="number" step="0.01" class="form-control" formControlName="unitPrice">
+                <div class="input-group-append">
+                    <span class="input-group-text">€</span>
+                </div>
             </div>
         </div>
         <div class="col-12">
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="gridCheck">
+                <input class="form-check-input" type="checkbox" id="gridCheck" formControlName="isAlergen">
                 <label class="form-check-label">
                     Alergène
                 </label>
@@ -44,6 +46,7 @@
                 <div *ngIf="!ingredient">Ajouter</div>
                 <div *ngIf="ingredient">Modifier</div>
             </button>
+            <button class="btn btn-primary" id="cancel" (click)="cancel()">Annuler</button>
         </div>
     </form>
 </div>
