@@ -1,12 +1,29 @@
-<div *ngIf="ingredients.length > 0;else noIngredients">
-    <ul class="list-group">
-        <li *ngFor="let ingredient of ingredients"  class="list-group-item">
-            <app-ingredient-item [ingredient]="ingredient"></app-ingredient-item>
-        </li>
-    </ul>
+<div class="row">
+    <div class="col-md-2">
+    
+    </div>
+    <div class="col-md-8" id="list">
+        <div *ngIf="ingredients.length > 0;else noIngredients">
+            <ul class="list-group">
+                <li *ngFor="let ingredient of ingredients"  class="list-group-item">
+                    <app-ingredient-form *ngIf="this.ingredientToModify == ingredient" class="list-group-item" 
+                    [ingredient]="ingredient" (cancelEvent)="cancel()">
+                    </app-ingredient-form>
+                    
+                    <app-ingredient-item *ngIf="this.ingredientToModify != ingredient" [ingredient]="ingredient" (modifyEvent)="selectIngredient($event)"></app-ingredient-item>
+                </li>
+            </ul>
+            
+            <br>
+        </div>
+        
+        <ng-template #noIngredients>
+            <hr>
+            <h5>No ingredients to show</h5>
+        </ng-template>
+        
+        <div>
+            <button class="btn" id="btn-add" type="button">Ajouter un ingrédient</button>
+        </div>
 </div>
-
-<ng-template #noIngredients>
-    <hr>
-    <h5>No ingredients to show</h5>
-</ng-template>
+</div>

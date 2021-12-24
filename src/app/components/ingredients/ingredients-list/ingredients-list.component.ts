@@ -12,6 +12,7 @@ import { IngredientService } from 'src/app/services/ingredient.service';
 export class IngredientsListComponent implements OnInit {
   //ingredientsCollection : AngularFirestoreCollection<Ingredient>;
   ingredients : Ingredient[] = [];
+  ingredientToModify?: Ingredient;
     /*new Ingredient(1, "Pomme", IngredientType.fruit, Unit.piece, 30, 0.5, false), 
     new Ingredient(2, "Steak haché", IngredientType.meat, Unit.kg, 5, 10, false),
     new Ingredient(3, "Riz", IngredientType.epicerie, Unit.kg, 10, 0.5, false)*/
@@ -32,7 +33,13 @@ export class IngredientsListComponent implements OnInit {
     this.ingredientService.getIngredients().subscribe(ingredients => {
       this.ingredients = ingredients;
     });
-
   }
 
+  selectIngredient(ingredient: Ingredient): void {
+    this.ingredientToModify = ingredient;
+  }
+
+  cancel(): void {
+    this.ingredientToModify = undefined;
+  }
 }

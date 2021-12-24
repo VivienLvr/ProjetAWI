@@ -32,4 +32,8 @@ export class IngredientService {
   addIngredient(i : Ingredient) {
     this.ingredientsCollection.add(i);
   }
+
+  modifyIngredient(i : Ingredient) {
+    
+  }
 }
