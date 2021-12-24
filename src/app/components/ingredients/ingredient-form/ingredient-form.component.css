@@ -7,3 +7,7 @@
     background-color: darkgray;
     border-color: aliceblue;
 }
+
+form {
+    margin: 15px;
+}

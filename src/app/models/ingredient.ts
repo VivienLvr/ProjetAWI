@@ -13,7 +13,7 @@ export enum Unit {
 }
 
 export class Ingredient {
-    id : number;
+    id : string;
     name : String;
     category : IngredientType;
     unit : Unit;
@@ -21,7 +21,7 @@ export class Ingredient {
     unitPrice : number;
     isAlergen : boolean;
 
-    constructor(id: number, name: String, cate: IngredientType, unit: Unit, stock: number, unitPrice: number, isAlergen: boolean) {
+    constructor(id: string, name: String, cate: IngredientType, unit: Unit, stock: number, unitPrice: number, isAlergen: boolean) {
         this.id = id;
         this.name = name;
         this.category = cate;

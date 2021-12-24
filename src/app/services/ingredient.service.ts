@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { Ingredient, IngredientType, Unit } from '../models/ingredient';
 
 @Injectable({
@@ -18,7 +18,13 @@ export class IngredientService {
 
   constructor(public afs: AngularFirestore) { 
     this.ingredientsCollection = afs.collection<Ingredient>('ingredient')
-    this.ingredients = this.ingredientsCollection.valueChanges();
+    this.ingredients = this.ingredientsCollection.snapshotChanges().pipe(
+      map(ingredients => ingredients.map(i => {
+       let ingredient: Ingredient = i.payload.doc.data();
+       ingredient.id = i.payload.doc.id;
+       return ingredient;
+      }))
+    );
   }
 
   getIngredients(): Observable<Ingredient[]> {
@@ -29,11 +35,33 @@ export class IngredientService {
     console.log("Hello");
   }
 
-  addIngredient(i : Ingredient) {
-    this.ingredientsCollection.add(i);
+  async addIngredient(i : Ingredient): Promise<String> {
+    try {
+      await this.ingredientsCollection.add({...i})
+      console.log("ingredient added !!" + i)
+      return "addSuccess";
+    }
+    catch(error) {
+      console.log(error)
+      return "addFailure";
+    }
   }
 
-  modifyIngredient(i : Ingredient) {
-    
+  async modifyIngredient(i : Ingredient): Promise<String> {
+    // adding an ingredient
+    if(i.id == "") {
+      return await this.addIngredient(i);
+    }
+    else {
+      try {
+        await this.ingredientsCollection.doc(i.id).update(i);
+        console.log("ingredient modified !!" + i)
+        return "modifSuccess";
+      }
+      catch(error) {
+        console.log(error);
+        return "modifFailure";
+      }
+    }
   }
 }

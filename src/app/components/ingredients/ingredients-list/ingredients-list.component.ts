@@ -13,6 +13,9 @@ export class IngredientsListComponent implements OnInit {
   //ingredientsCollection : AngularFirestoreCollection<Ingredient>;
   ingredients : Ingredient[] = [];
   ingredientToModify?: Ingredient;
+  displayForm: boolean = false;
+  addSuccess: boolean = false;
+  modifSuccess: boolean = false;
     /*new Ingredient(1, "Pomme", IngredientType.fruit, Unit.piece, 30, 0.5, false), 
     new Ingredient(2, "Steak haché", IngredientType.meat, Unit.kg, 5, 10, false),
     new Ingredient(3, "Riz", IngredientType.epicerie, Unit.kg, 10, 0.5, false)*/
@@ -22,7 +25,6 @@ export class IngredientsListComponent implements OnInit {
     /*this.ingredientsCollection = afs.collection('ingredient');
     console.log(this.ingredientsCollection);
     */
-    
   }
 
   ngOnInit(): void {
@@ -39,7 +41,25 @@ export class IngredientsListComponent implements OnInit {
     this.ingredientToModify = ingredient;
   }
 
-  cancel(): void {
+  cancelModif(): void {
     this.ingredientToModify = undefined;
+  }
+
+  cancel(): void {
+    this.displayForm = false;
+  }
+
+  displayAddForm(): void {
+    this.displayForm = true;
+  }
+
+  addSuccessEvent(): void {
+    this.addSuccess = true;
+    console.log("addSuccessEvent")
+  }
+
+  modifSuccessEvent(): void {
+    this.modifSuccess = true;
+    console.log("modifSuccessEvent")
   }
 }
