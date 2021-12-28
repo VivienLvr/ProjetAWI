@@ -10,7 +10,6 @@ import { IngredientService } from 'src/app/services/ingredient.service';
   styleUrls: ['./ingredients-list.component.css']
 })
 export class IngredientsListComponent implements OnInit {
-  //ingredientsCollection : AngularFirestoreCollection<Ingredient>;
   ingredients : Ingredient[] = [];
   ingredientToModify?: Ingredient;
   displayForm: boolean = false;
@@ -20,11 +19,8 @@ export class IngredientsListComponent implements OnInit {
     new Ingredient(2, "Steak haché", IngredientType.meat, Unit.kg, 5, 10, false),
     new Ingredient(3, "Riz", IngredientType.epicerie, Unit.kg, 10, 0.5, false)*/
   
-
   constructor(private ingredientService: IngredientService) { 
-    /*this.ingredientsCollection = afs.collection('ingredient');
-    console.log(this.ingredientsCollection);
-    */
+    
   }
 
   ngOnInit(): void {
