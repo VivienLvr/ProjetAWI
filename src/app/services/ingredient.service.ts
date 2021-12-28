@@ -64,4 +64,8 @@ export class IngredientService {
       }
     }
   }
+
+  async delete(i: Ingredient) {
+    await this.ingredientsCollection.doc(i.id).delete();
+  }
 }

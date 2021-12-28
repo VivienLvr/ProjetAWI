@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Ingredient } from 'src/app/models/ingredient';
+import { IngredientService } from 'src/app/services/ingredient.service'
 
 @Component({
   selector: 'app-ingredient-item',
@@ -9,7 +10,8 @@ import { Ingredient } from 'src/app/models/ingredient';
 export class IngredientItemComponent implements OnInit {
   @Input() ingredient?: Ingredient;
   @Output() modifyEvent: EventEmitter<Ingredient> = new EventEmitter<Ingredient>();
-  constructor() { }
+  confirmDelete: boolean = false;
+  constructor(private ingredientService: IngredientService) { }
 
   ngOnInit(): void {
   }
@@ -17,6 +19,19 @@ export class IngredientItemComponent implements OnInit {
   modify() {
     console.log("Modify ingre : " + this.ingredient);
     this.modifyEvent.emit(this.ingredient);
+  }
+
+  delete() {
+    if(!this.ingredient) {
+      return
+    }
+    if(this.confirmDelete) {
+      this.ingredientService.delete(this.ingredient);
+      this.confirmDelete = false;
+    }
+    else {
+      this.confirmDelete = true;
+    }
   }
 
 }
