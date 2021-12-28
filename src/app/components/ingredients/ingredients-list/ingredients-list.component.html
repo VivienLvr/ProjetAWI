@@ -3,14 +3,22 @@
     
     </div>
     <div class="col-md-8" id="list">
+        <p *ngIf="this.addSuccess" class="alert alert-success">Ingrédient ajouté !</p>
+        <p *ngIf="this.modifSuccess" class="alert alert-success">Ingrédient modifié !</p>
         <div *ngIf="ingredients.length > 0;else noIngredients">
             <ul class="list-group">
                 <li *ngFor="let ingredient of ingredients"  class="list-group-item">
-                    <app-ingredient-form *ngIf="this.ingredientToModify == ingredient" class="list-group-item" 
-                    [ingredient]="ingredient" (cancelEvent)="cancel()">
+                    <app-ingredient-form *ngIf="this.ingredientToModify == ingredient" 
+                    [ingredient]="ingredient" (cancelEvent)="cancelModif()">
                     </app-ingredient-form>
                     
-                    <app-ingredient-item *ngIf="this.ingredientToModify != ingredient" [ingredient]="ingredient" (modifyEvent)="selectIngredient($event)"></app-ingredient-item>
+                    <app-ingredient-item *ngIf="this.ingredientToModify != ingredient" [ingredient]="ingredient" 
+                    (modifyEvent)="selectIngredient($event)" (modifSuccess)="modifSuccessEvent()">
+                    </app-ingredient-item>
+                </li>
+                <li class="list-group-item" *ngIf="this.displayForm">
+                    <app-ingredient-form (cancelEvent)="cancel()" (submitEvent)="this.displayForm = false" (addSuccess)="addSuccessEvent()">
+                    </app-ingredient-form>
                 </li>
             </ul>
             
@@ -19,11 +27,11 @@
         
         <ng-template #noIngredients>
             <hr>
-            <h5>No ingredients to show</h5>
+            <h5>Aucun ingrédient à afficher</h5>
         </ng-template>
-        
-        <div>
-            <button class="btn" id="btn-add" type="button">Ajouter un ingrédient</button>
+        <p class="bold" styles="{ margin-top: 0; }">alergènes</p>
+        <div id="parent">
+            <button class="btn" id="btn-add" type="button" (click)="displayAddForm()">Ajouter un ingrédient</button>
         </div>
 </div>
 </div>

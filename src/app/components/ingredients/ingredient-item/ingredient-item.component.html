@@ -1,7 +1,19 @@
 <div *ngIf="ingredient">
-    {{ ingredient.name }}
-    <button class="btn btn-danger" id="delete">Delete</button>
-    <button class="btn btn-info" id="modif" (click)="modify()">Modif</button>
+    <div class="row">
+        <div class="col-md-4" [ngClass]="{'bold' : ingredient.isAlergen}">{{ ingredient.name }}</div>
+        <div class="col-md-4">Catégorie : {{ ingredient.category }}</div>
+        <div class="col-md-4">stock : {{ ingredient.stock }}</div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">Prix unitaire : {{ ingredient.unitPrice }}€ / {{ ingredient.unit }}</div>
+    </div>
+    
+     
+    <button class="btn btn-danger" id="delete" (click)="delete()">Supprimer</button>
+    <button class="btn btn-primary" id="modif" (click)="modify()">Modifier</button>
     <br><br>
-    <p style="float: right;" class="">Êtes-vous sûr de vouloir supprimer cet ingédient ? Cette action est irreversible</p>
+    <div *ngIf="confirmDelete" style="display: inline">
+        <button id="annuler" (click)="this.confirmDelete = false">Annuler</button>
+        <p style="float: right;" class="alert alert-danger">Êtes-vous sûr de vouloir supprimer cet ingédient ? Cette action est irreversible</p>
+    </div>
 </div>
