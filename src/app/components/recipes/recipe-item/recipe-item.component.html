@@ -1,0 +1,16 @@
+<div *ngIf="ingredient">
+    <div class="row">
+        <div class="col-md-4">{{ recipe.name }}</div>
+        <div class="col-md-4">Resp : {{ recipe.author }}</div>
+        <div class="col-md-4">Nb Couverts : {{ recipe.nbPlates }}</div>
+    </div>
+    
+     
+    <button class="btn btn-danger" id="delete" (click)="delete()">Supprimer</button>
+    <button class="btn btn-primary" id="modif" (click)="modify()">Modifier</button>
+    <br><br>
+    <div *ngIf="confirmDelete" style="display: inline">
+        <button id="annuler" (click)="this.confirmDelete = false">Annuler</button>
+        <p style="float: right;" class="alert alert-danger">Êtes-vous sûr de vouloir supprimer cet ingédient ? Cette action est irreversible</p>
+    </div>
+</div>

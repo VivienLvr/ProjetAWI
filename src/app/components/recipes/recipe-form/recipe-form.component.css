@@ -1,0 +1,13 @@
+.container {
+    width: 80%;
+}
+
+#cancel {
+    margin-left: 20px;
+    background-color: darkgray;
+    border-color: aliceblue;
+}
+
+form {
+    margin: 15px;
+}

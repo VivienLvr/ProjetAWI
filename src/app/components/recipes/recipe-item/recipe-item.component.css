@@ -1,0 +1,25 @@
+all {
+    display: inline;
+}
+
+#modif, #delete {
+    float: right;
+    margin-right: 20px; 
+}
+
+.btn {
+    opacity: 90%;
+}
+
+.btn-primary {
+    background-color: rgb(96, 180, 207);
+    border: rgb(96, 180, 207);
+}
+
+#annuler {
+    float: right;
+    color: blue;
+    border: none;
+    background: none;
+    margin-top: 2%;
+}

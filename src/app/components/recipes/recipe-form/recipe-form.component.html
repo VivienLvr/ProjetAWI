@@ -1,0 +1,23 @@
+<form class="row g-3" [formGroup]="recetteGroup" (ngSubmit)="submit()">
+    <h3 *ngIf="recipe">Modifier la recette</h3>
+    <h3 *ngIf="!recipe">Ajout d'une recette</h3>
+    <div class="col-md-6">
+        <label for="name" class="form-label">Intitulé</label>
+        <input type="text" class="form-control" formControlName="name" required> 
+    </div>
+    <div class="col-md-4" style="position: rigth;">
+        <label for="author" class="form-label">Responsable</label>
+        <input type="text" class="form-control" formControlName="author">
+    </div>
+    <div class="col-md-4">
+        <label for="nbPlates" class="form-label">Nombre de couverts</label>
+        <input type="text" class="form-control" formControlName="nbPlates">
+    </div>
+    <div class="col-12">
+        <button type="submit" class="btn btn-primary">
+            <div *ngIf="!recipe">Ajouter</div>
+            <div *ngIf="recipe">Modifier</div>
+        </button>
+        <button class="btn btn-primary" id="cancel" (click)="cancel()">Annuler</button>
+    </div>
+</form>

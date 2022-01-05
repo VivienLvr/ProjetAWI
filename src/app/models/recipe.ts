@@ -6,27 +6,28 @@ enum RecipeType {
 }
 
 export class Recipe {
-    id : number;
+    id : string;
     name : String;
     author : String;
     nbPlates : number;
-    priceCoef : number;
-    category : RecipeType;
-    progression : Progression;
+    //priceCoef : number;
+    //category : RecipeType;
+    //progression : Progression;
 
-    constructor(id: number, name : String,
+    constructor(id: string, name : String,
         author : String,
-        nbPlates : number,
-        priceCoef : number,
-        category : RecipeType,
-        progression : Progression) {
+        nbPlates : number
+        //priceCoef : number,
+        //category : RecipeType,
+        //progression : Progression
+        ) {
             this.id = id;
             this.name = name;
             this.author = author;
             this.nbPlates = nbPlates;
-            this.priceCoef = priceCoef;
-            this.category = category;
-            this.progression = progression;
+            //this.priceCoef = priceCoef;
+            //this.category = category;
+            //this.progression = progression;
         }
 
 }
