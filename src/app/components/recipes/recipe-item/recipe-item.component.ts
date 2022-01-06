@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Recipe } from 'src/app/models/recipe';
+import { RecipeService } from 'src/app/services/recipe.service';
 
 declare var html2pdf: any;
 
@@ -10,7 +11,9 @@ declare var html2pdf: any;
 })
 export class RecipeItemComponent implements OnInit {
   @Input() recipe?: Recipe;
-  constructor() { }
+  @Output() modifyEvent: EventEmitter<Recipe> = new EventEmitter<Recipe>();
+  confirmDelete: boolean = false;
+  constructor(private recipeService: RecipeService) { }
 
   ngOnInit(): void {
   }
@@ -22,6 +25,24 @@ export class RecipeItemComponent implements OnInit {
       filename: `${this.recipe!.name}.pdf`
     };
     html2pdf().from(element).set(opt).save();
+  }
+
+  modify() {
+    console.log("Modify ingre : " + this.recipe);
+    this.modifyEvent.emit(this.recipe);
+  }
+
+  delete() {
+    if(!this.recipe) {
+      return
+    }
+    if(this.confirmDelete) {
+      this.recipeService.delete(this.recipe);
+      this.confirmDelete = false;
+    }
+    else {
+      this.confirmDelete = true;
+    }
   }
 
 }

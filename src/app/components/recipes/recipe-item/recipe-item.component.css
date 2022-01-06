@@ -5,6 +5,10 @@
     float: right;
 }
 
+.btn {
+    opacity: 90%;
+}
+
 #pdf {
     margin-top: 2%;
     width: 90%;
@@ -30,4 +34,19 @@ tr, td {
 
 .mg-r-20 {
     margin-right: 20px;
+}
+
+
+
+#modif, #delete {
+    float: right;
+    margin-right: 20px; 
+}
+
+#annuler {
+    float: right;
+    color: blue;
+    border: none;
+    background: none;
+    margin-top: 2%;
 }

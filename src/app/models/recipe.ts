@@ -6,7 +6,7 @@ enum RecipeType {
 }
 
 export class Recipe {
-    id : String;
+    id : string;
     name : String;
     author : String;
     covers : number;
@@ -14,7 +14,7 @@ export class Recipe {
     category : RecipeType;
     progression : Progression;
 
-    constructor(id: String, name : String,
+    constructor(id: string, name : String,
         author : String,
         covers : number,
         priceCoef : number,
