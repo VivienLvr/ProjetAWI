@@ -24,4 +24,38 @@ export class RecipeService {
   getRecipes(): Observable<Recipe[]> {
     return this.recipes;
   }
+
+  async addRecipe(r : Recipe): Promise<String> {
+    try {
+      await this.recipesCollection.add({...r})
+      console.log("recipe added !!" + r)
+      return "addSuccess";
+    }
+    catch(error) {
+      console.log(error)
+      return "addFailure";
+    }
+  }
+
+  async modifyRecipe(r : Recipe): Promise<String> {
+    // adding an recipe
+    if(r.id == "") {
+      return await this.addRecipe(r);
+    }
+    else {
+      try {
+        await this.recipesCollection.doc(r.id).update(r);
+        console.log("recipe modified !!" + r)
+        return "modifSuccess";
+      }
+      catch(error) {
+        console.log(error);
+        return "modifFailure";
+      }
+    }
+  }
+
+  async delete(r: Recipe) {
+    await this.recipesCollection.doc(r.id).delete();
+  }
 }

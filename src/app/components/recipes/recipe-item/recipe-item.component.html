@@ -1,6 +1,13 @@
 <div *ngIf="recipe">
     {{ recipe.name }}
     <button (click)="download()" class="btn btn-primary">Télécharger le pdf</button>
+    <button class="btn btn-danger" id="delete" (click)="delete()">Supprimer</button>
+    <button class="btn btn-primary" id="modif" (click)="modify()">Modifier</button>
+    <br><br>
+    <div *ngIf="confirmDelete" style="display: inline">
+        <button id="annuler" (click)="this.confirmDelete = false">Annuler</button>
+        <p style="float: right;" class="alert alert-danger">Êtes-vous sûr de vouloir supprimer cet ingédient ? Cette action est irreversible</p>
+    </div>
     <table id="pdf">
         <tr class="row">
             <td class="col-md-12 grey centered bold">
