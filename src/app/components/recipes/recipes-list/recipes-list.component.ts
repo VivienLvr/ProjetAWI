@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Recipe } from 'src/app/models/recipe';
 import { RecipeService } from 'src/app/services/recipe.service';
 
-declare var html2pdf: any;
 
 @Component({
   selector: 'app-recipes-list',
@@ -19,8 +18,6 @@ export class RecipesListComponent implements OnInit {
       this.recipes = recipes;
     })
   }
-  download(): void {
-    const html = document.getElementById('pdf');
-    html2pdf(html);
-  }
+  
+  
 }

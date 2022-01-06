@@ -1,0 +1,33 @@
+<div *ngIf="recipe">
+    {{ recipe.name }}
+    <button (click)="download()" class="btn btn-primary">Télécharger le pdf</button>
+    <table id="pdf">
+        <tr class="row">
+            <td class="col-md-12 grey centered bold">
+                FICHE TECHNIQUE
+            </td>
+        </tr>
+        <tr class="row">
+            <td class="col-md-5 grey centered mg-r-20">
+                INTITULE
+            </td>
+            <td class="col-md-3 grey centered">
+                AUTHEUR
+            </td>
+            <td class="col-md-3 grey centered">
+                NBRE DE COUVERTS
+            </td>
+        </tr>
+        <tr class="row">
+            <td class="col-md-5 centered mg-r-20">
+                {{ recipe.name }}
+            </td>
+            <td class="col-md-3 centered">
+                {{ recipe.author }}
+            </td>
+            <td class="col-md-3 centered">
+                {{ recipe.covers }}
+            </td>
+        </tr>
+    </table>
+</div>
