@@ -17,6 +17,7 @@ import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { IngredientItemComponent } from './components/ingredients/ingredient-item/ingredient-item.component';
 import { IngredientFormComponent } from './components/ingredients/ingredient-form/ingredient-form.component';
 import { RecipeItemComponent } from './components/recipes/recipe-item/recipe-item.component';
+import { HomepageComponent } from './components/homepage/homepage.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { RecipeItemComponent } from './components/recipes/recipe-item/recipe-ite
     HeaderComponent,
     IngredientItemComponent,
     IngredientFormComponent,
-    RecipeItemComponent
+    RecipeItemComponent,
+    HomepageComponent
   ],
   imports: [
     BrowserModule,
