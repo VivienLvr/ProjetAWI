@@ -18,6 +18,7 @@ import { IngredientItemComponent } from './components/ingredients/ingredient-ite
 import { IngredientFormComponent } from './components/ingredients/ingredient-form/ingredient-form.component';
 import { RecipeItemComponent } from './components/recipes/recipe-item/recipe-item.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
+import { StageFormComponent } from './components/recipes/stage-form/stage-form.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { HomepageComponent } from './components/homepage/homepage.component';
     IngredientItemComponent,
     IngredientFormComponent,
     RecipeItemComponent,
-    HomepageComponent
+    HomepageComponent,
+    StageFormComponent
   ],
   imports: [
     BrowserModule,

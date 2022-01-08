@@ -2,12 +2,24 @@
     width: 80%;
 }
 
+#btn-add {
+    background-color: rgb(96, 180, 207);
+    opacity: 98%;
+    color: white;
+}
+
+form {
+    padding: 30px;
+}
+
+.row {
+    margin-top: 40px;
+}
+
 #cancel {
     margin-left: 20px;
     background-color: darkgray;
     border-color: aliceblue;
 }
 
-form {
-    margin: 15px;
-}
+
