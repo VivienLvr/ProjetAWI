@@ -1,12 +1,19 @@
+<div id="parent">
+    <button class="btn" id="btn-add" type="button" (click)="displayAddForm()">Ajouter un ingrédient</button>
+</div>
 <div class="row">
     <div class="col-md-2">
-    
+
     </div>
     <div class="col-md-8" id="list">
         <p *ngIf="this.addSuccess" class="alert alert-success">Ingrédient ajouté !</p>
         <p *ngIf="this.modifSuccess" class="alert alert-success">Ingrédient modifié !</p>
         <div *ngIf="ingredients.length > 0;else noIngredients">
             <ul class="list-group">
+                <li class="list-group-item" *ngIf="this.displayForm">
+                    <app-ingredient-form (cancelEvent)="cancel()" (submitEvent)="this.displayForm = false" (addSuccess)="addSuccessEvent()">
+                    </app-ingredient-form>
+                </li>
                 <li *ngFor="let ingredient of ingredients"  class="list-group-item">
                     <app-ingredient-form *ngIf="this.ingredientToModify == ingredient" 
                     [ingredient]="ingredient" (cancelEvent)="cancelModif()">
@@ -16,10 +23,7 @@
                     (modifyEvent)="selectIngredient($event)" (modifSuccess)="modifSuccessEvent()">
                     </app-ingredient-item>
                 </li>
-                <li class="list-group-item" *ngIf="this.displayForm">
-                    <app-ingredient-form (cancelEvent)="cancel()" (submitEvent)="this.displayForm = false" (addSuccess)="addSuccessEvent()">
-                    </app-ingredient-form>
-                </li>
+
             </ul>
         </div>
         
@@ -27,9 +31,6 @@
             <hr>
             <h5>Aucun ingrédient à afficher</h5>
         </ng-template>
-        <p class="bold" styles="{ margin-top: 0; }">alergènes</p>
-        <div id="parent">
-            <button class="btn" id="btn-add" type="button" (click)="displayAddForm()">Ajouter un ingrédient</button>
-        </div>
+        <p class="bold" styles="{ margin-top: 0; }">* allergènes en gras</p>
 </div>
 </div>

@@ -1,6 +1,7 @@
 #parent {
-    display: flex;
+    display: grid;
     justify-content: center;
+    margin-bottom: 20px;
 }
 
 #btn-add {
@@ -13,4 +14,8 @@
 
 .container {
     width: 80%;
+}
+
+.bold {
+    color : white;
 }
