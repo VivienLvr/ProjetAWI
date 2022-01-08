@@ -1,23 +1,47 @@
-<form class="row g-3" [formGroup]="recipeGroup" (ngSubmit)="submit()">
+<form class="row g-3 card" [formGroup]="recipeGroup" (ngSubmit)="submit()">
     <h3 *ngIf="recipe">Modifier la recette</h3>
     <h3 *ngIf="!recipe">Ajout d'une recette</h3>
-    <div class="col-md-6">
-        <label for="name" class="form-label">Intitulé</label>
-        <input type="text" class="form-control" formControlName="name" required> 
+    <div class="row">
+
+        <div class="col-md-4">
+            <label for="name" class="form-label">Intitulé</label>
+            <input type="text" class="form-control" formControlName="name" required> 
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-3" style="position: rigth;">
+            <label for="author" class="form-label">Responsable</label>
+            <input type="text" class="form-control" formControlName="author">
+        </div>
+        <div class="col-md-3">
+            <label for="nbPlates" class="form-label">Nombre de couverts</label>
+            <input type="number" class="form-control" formControlName="covers">
+        </div>
     </div>
-    <div class="col-md-4" style="position: rigth;">
-        <label for="author" class="form-label">Responsable</label>
-        <input type="text" class="form-control" formControlName="author">
+    <div class="row">
+        <div class="col-md-4">
+            <label for="category" class="form-label">Type</label>
+            <select class="form-select" formControlName="category">
+                <option disabled>Choisir...</option>
+                <option *ngFor="let type of types" [selected]="this.categorySelected == type">{{ type }}</option>
+            </select>
+        </div>
     </div>
-    <div class="col-md-4">
-        <label for="nbPlates" class="form-label">Nombre de couverts</label>
-        <input type="text" class="form-control" formControlName="covers">
+
+    <div id="progression">
+        <br>
+        <br>
+        <h2>Progression</h2>
+        <br>
+        <app-stage-form></app-stage-form>
+        <button class="btn" id="btn-add" type="button" (click)="addStage()">Ajouter une étape</button>
     </div>
-    <div class="col-12">
-        <button type="submit" class="btn btn-primary">
-            <div *ngIf="!recipe">Ajouter</div>
-            <div *ngIf="recipe">Modifier</div>
-        </button>
-        <button class="btn btn-primary" id="cancel" (click)="cancel()">Annuler</button>
+    <div class="row">   
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary">
+                <div *ngIf="!recipe">Ajouter</div>
+                <div *ngIf="recipe">Modifier</div>
+            </button>
+            <button class="btn btn-primary" id="cancel" (click)="cancel()">Annuler</button>
+        </div>
     </div>
 </form>

@@ -23,4 +23,8 @@ export class RecipesListComponent implements OnInit {
   redirectModif(recipe : Recipe) {
     this.router.navigateByUrl(`/recette/${recipe.id}`);
   }
+
+  redirectAddRecipe() {
+    this.router.navigateByUrl('/nouvelle-recette');
+  }
 }
