@@ -10,32 +10,93 @@
 }
 
 #pdf {
-    margin-top: 2%;
+    margin: 0 auto;
     width: 90%;
+    border : 0.5px solid black;
+    overflow :auto;
 }
 
-table, td {
-    border: 0.5px solid black;
-}
-
-tr, td {
-    position: relative;
-    padding-left: 5px;
-    padding-right: 5px;
-}
-
-.centered {
+#title {
     text-align: center;
-}
-
-.grey {
     background-color: rgb(161, 161, 161);
+    border : 0.5px solid black;
+    font-weight : bold;
 }
 
-.mg-r-20 {
-    margin-right: 20px;
+#leftPart {
+    float: left;
+    width : 43%;
+    border-right : 1px solid black;
+
 }
 
+#rightPart {
+    float: right;
+    width : 55%;
+    border-left : 1px solid black;
+}
+
+#middlePart {
+    float: left;
+    width : 2%;
+    border-top : 0.5px solid black;
+}
+
+#subtitle {
+    text-align: center;
+    background-color: rgb(161, 161, 161);
+    border : 0.5px solid black;
+    font-weight : bold;
+    font-size: 75%;
+    float : left;
+}
+
+#text {
+    text-align: center;
+    border : 0.5px solid black;
+    font-size: 75%;
+    float : left;
+}
+
+.full {
+    width : 100%;
+}
+
+.half {
+    width : 50%;
+}
+
+.seventy {
+    width : 70%;
+}
+
+.fifteen {
+    width : 15%;
+}
+
+.twenty {
+    width : 20%;
+}
+
+.thirty {
+    width : 30%;
+}
+
+.minsize {
+    min-height : 150px;
+}
+
+.mintext {
+    min-height : 20px;
+}
+
+.bold {
+    font-style: bold;
+}
+
+.italic {
+    font-style: italic;
+}
 
 
 #modif, #delete {

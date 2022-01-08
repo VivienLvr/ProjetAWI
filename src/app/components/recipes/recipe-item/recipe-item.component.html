@@ -1,4 +1,4 @@
-<div *ngIf="recipe">
+<div id = "main" *ngIf="recipe">
     {{ recipe.name }}
     <button (click)="download()" class="btn btn-primary">Télécharger le pdf</button>
     <button class="btn btn-danger" id="delete" (click)="delete()">Supprimer</button>
@@ -8,33 +8,34 @@
         <button id="annuler" (click)="this.confirmDelete = false">Annuler</button>
         <p style="float: right;" class="alert alert-danger">Êtes-vous sûr de vouloir supprimer cet ingédient ? Cette action est irreversible</p>
     </div>
-    <table id="pdf">
-        <tr class="row">
-            <td class="col-md-12 grey centered bold">
-                FICHE TECHNIQUE
-            </td>
-        </tr>
-        <tr class="row">
-            <td class="col-md-5 grey centered mg-r-20">
-                INTITULE
-            </td>
-            <td class="col-md-3 grey centered">
-                AUTHEUR
-            </td>
-            <td class="col-md-3 grey centered">
-                NBRE DE COUVERTS
-            </td>
-        </tr>
-        <tr class="row">
-            <td class="col-md-5 centered mg-r-20">
-                {{ recipe.name }}
-            </td>
-            <td class="col-md-3 centered">
-                {{ recipe.author }}
-            </td>
-            <td class="col-md-3 centered">
-                {{ recipe.covers }}
-            </td>
-        </tr>
-    </table>
+    <div id = "pdf">
+        <div id = title>FICHE TECHNIQUE</div>
+        <div id = leftPart>
+            <div id = subtitle class = "full">INTITULE</div>
+            <div id = text class = "full italic mintext">{{recipe.name}}</div>
+            <div id = subtitle class = "half">DENREES</div>
+            <div id = subtitle class = "twenty">UNITES</div>
+            <div id = subtitle class = "thirty">QUANTITES</div>
+            <div id = text class = "half minsize"></div> 
+            <div id = text class = "twenty minsize"></div>
+            <div id = text class = "thirty minsize"></div>   
+            <div id = subtitle class = "full">MATERIELS SPECIFIQUES</div>
+            <div id = text class = "full minsize"></div>
+        </div>
+        <div id = middlePart></div>
+        <div id = rightPart>
+            <div id = subtitle class = "half">RESPONSABLE</div>
+            <div id = subtitle class = "half">NBRE DE COUVERTS</div>
+            <div id = text class = "half mintext">{{recipe.author}}</div> 
+            <div id = text class = "half bold mintext">{{recipe.covers}}</div>
+            <div id = subtitle class = "fifteen">N° PHASE</div>
+            <div id = subtitle class = "seventy">TECHNIQUES DE REALISATION</div>
+            <div id = subtitle class = "fifteen">DUREE</div>
+            <div id = text class = "fifteen minsize"></div> 
+            <div id = text class = "seventy minsize"></div>
+            <div id = text class = "fifteen minsize"></div>
+            <div id = subtitle class = "full">MATERIELS DE DRESSAGE</div>
+            <div id = text class = "full minsize"></div>
+        </div>
+    </div>
 </div>
