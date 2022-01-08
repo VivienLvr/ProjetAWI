@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
-import { map, Observable } from 'rxjs';
+import { map, Observable, of, Subscription } from 'rxjs';
 import { Recipe } from '../models/recipe';
 
 @Injectable({
@@ -36,6 +36,18 @@ export class RecipeService {
       return "addFailure";
     }
   }
+
+  /*getRecipe(id: string) : Subscription {
+    let recipe: Subscription;
+    try {
+      const recipeDoc = this.afs.doc<Recipe>(`recipe/${id}`);
+      recipe = recipeDoc.valueChanges().subscribe();
+      return recipe;
+    }
+    catch(error) {
+      console.log(error);
+    }
+  }*/
 
   async modifyRecipe(r : Recipe): Promise<String> {
     // adding an recipe

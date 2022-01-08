@@ -10,16 +10,16 @@ export class Recipe {
     name : String;
     author : String;
     covers : number;
-    priceCoef : number;
-    category : RecipeType;
-    progression : Progression;
+    priceCoef? : number;
+    category? : RecipeType;
+    progression? : Progression;
 
     constructor(id: string, name : String,
         author : String,
         covers : number,
-        priceCoef : number,
-        category : RecipeType,
-        progression : Progression) {
+        priceCoef? : number,
+        category? : RecipeType,
+        progression? : Progression) {
             this.id = id;
             this.name = name;
             this.author = author;

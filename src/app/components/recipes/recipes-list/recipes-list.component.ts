@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Recipe } from 'src/app/models/recipe';
 import { RecipeService } from 'src/app/services/recipe.service';
 
@@ -11,7 +12,7 @@ import { RecipeService } from 'src/app/services/recipe.service';
 export class RecipesListComponent implements OnInit {
   recipes: Recipe[] = [];
   
-  constructor(private recipeService: RecipeService) { }
+  constructor(private recipeService: RecipeService, private router: Router) { }
 
   ngOnInit(): void {
     this.recipeService.getRecipes().subscribe(recipes => {
@@ -19,5 +20,7 @@ export class RecipesListComponent implements OnInit {
     })
   }
   
-  
+  redirectModif(recipe : Recipe) {
+    this.router.navigateByUrl(`/recette/${recipe.id}`);
+  }
 }
