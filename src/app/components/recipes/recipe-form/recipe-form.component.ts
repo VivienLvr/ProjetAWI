@@ -22,16 +22,24 @@ export class RecipeFormComponent implements OnInit {
   categorySelected: String = "";
   types: String[] = [];
   isNewStageVisible : boolean = false;
+  modifDuration : boolean = false;
+
+  durationGroup: FormGroup;
   stages: StageDescription[] = [
-    new StageDescription(1, "First stage", [new QuantityIngredient()], "Voici la description de l'étape")
+    new StageDescription("", "First stage", 10, [new QuantityIngredient()], "Voici la description de l'étape")
   ];
 
   constructor(private recipeService: RecipeService, private route: ActivatedRoute, private router: Router) { 
     this.recipeGroup = new FormGroup({
       name: new FormControl(),
       author: new FormControl(),
-      covers: new FormControl()
+      covers: new FormControl(),
+      category: new FormControl(),
     });
+
+    this.durationGroup = new FormGroup({
+      duration: new FormControl()
+    })
   }
 
   ngOnInit(): void {
@@ -47,15 +55,19 @@ export class RecipeFormComponent implements OnInit {
         this.recipeGroup = new FormGroup({
           name: new FormControl(this.recipe.name),
           author: new FormControl(this.recipe.author),
-          covers: new FormControl(this.recipe.covers)
+          covers: new FormControl(this.recipe.covers),
+          category: new FormControl(this.recipe.category)
         });
         this.categorySelected = this.recipe.category!;
+        console.log(this.recipe.name);
+        console.log(this.recipe.progression.title);
+        console.log(this.recipe.progression.duration);
+        
       }
     });
   }
 
   ngOnChanges(): void {
-    
   }
 
   
@@ -65,7 +77,7 @@ export class RecipeFormComponent implements OnInit {
       this.recipe = new Recipe("",
         this.recipeGroup.get('name')!.value,
         this.recipeGroup.get('author')!.value,
-        this.recipeGroup.get('covers')!.value, 0, RecipeType.cake, ""
+        this.recipeGroup.get('covers')!.value, new Progression("", this.recipeGroup.get('name')!.value, [], 0, this.stages), 0, RecipeType.cake
       );
       this.submitEvent.emit("Submited")
     }
@@ -82,11 +94,9 @@ export class RecipeFormComponent implements OnInit {
       
       switch(msg) {
         case 'addSuccess':
-          console.log("case addSuccess");
           this.addSuccess.emit("success")
           break;
         case 'modifSuccess':
-          console.log("case modifSuccess");
           this.modifSuccess.emit("success")
           break;
       }
@@ -117,5 +127,17 @@ export class RecipeFormComponent implements OnInit {
     const newStage = stages[1];
     const index = this.stages.findIndex(elem => elem == oldStage);
     this.stages[index] = newStage;
+  }
+
+  deleteStage(stage: StageDescription) {
+    const index = this.stages.findIndex(elem => elem == stage);
+    this.stages.splice(index);
+    console.log("elem n°" + index + " deleted");
+  }
+
+  modifyDuration() {
+    if(this.recipe) {
+      this.recipe!.progression.duration = this.durationGroup.get('duration')?.value;
+    }
   }
 }

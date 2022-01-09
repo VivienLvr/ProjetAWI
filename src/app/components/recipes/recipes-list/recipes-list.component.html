@@ -1,15 +1,16 @@
 <div id="parent">
     <button class="btn btn-1" id="btn-add" type="button" (click)="redirectAddRecipe()">Ajouter une recette</button>
 </div>
-<div class="row">
-    <div class="col-md-2">
-
-    </div>
-    <div class="col-md-8" id="list">
-        <ul class="list-group">
-            <app-recipe-item *ngFor="let recipe of recipes" [recipe]="recipe" (modifyEvent)="redirectModif($event)" class="list-group-item"></app-recipe-item>
-        </ul>
-    </div>
+<div class="form-inline container" style="width: 66%;">
+    <form [formGroup]="searchGroup" (ngSubmit)="search()">
+        <div class="input-group">
+            <input class="form-control mr-sm-2" type="search" placeholder="Rechercher un nom de recette" aria-label="Search" class="form-control" formControlName="search">
+            <button class="btn my-2 my-sm-0 btn-light" type="submit" id="search">Rechercher</button>
+        </div>
+    </form>
+    <ul class="list-group">
+        <app-recipe-item *ngFor="let recipe of recipes" [recipe]="recipe" (modifyEvent)="redirectModif($event)" class="list-group-item"></app-recipe-item>
+    </ul>
 </div>
 
 
