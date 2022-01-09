@@ -4,6 +4,8 @@ import { FormGroup, FormControl } from'@angular/forms';
 import { RecipeService } from 'src/app/services/recipe.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Progression } from 'src/app/models/progression';
+import { QuantityIngredient, Stage } from 'src/app/models/stage';
+import { StageDescription } from 'src/app/models/stage-description';
 
 @Component({
   selector: 'app-recipe-form',
@@ -19,7 +21,10 @@ export class RecipeFormComponent implements OnInit {
   @Output() modifSuccess: EventEmitter<String> = new EventEmitter();
   categorySelected: String = "";
   types: String[] = [];
-  displayNewStage : boolean = true;
+  isNewStageVisible : boolean = false;
+  stages: StageDescription[] = [
+    new StageDescription(1, "First stage", [new QuantityIngredient()], "Voici la description de l'étape")
+  ];
 
   constructor(private recipeService: RecipeService, private route: ActivatedRoute, private router: Router) { 
     this.recipeGroup = new FormGroup({
@@ -94,7 +99,23 @@ export class RecipeFormComponent implements OnInit {
     this.router.navigateByUrl("/recettes");
   }
 
-  addStage() {
-    this.displayNewStage = true;
+  displayNewStage() {
+    this.isNewStageVisible = true;
+  }
+
+  hideNewStage() {
+    this.isNewStageVisible = false;
+  }
+
+  addStage(stage: StageDescription) {
+    this.stages.push(stage);
+    this.isNewStageVisible = false;
+  }
+
+  modifStage(stages: StageDescription[]) {
+    const oldStage = stages[0];
+    const newStage = stages[1];
+    const index = this.stages.findIndex(elem => elem == oldStage);
+    this.stages[index] = newStage;
   }
 }

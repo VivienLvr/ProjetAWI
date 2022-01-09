@@ -7,3 +7,24 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+.btn-1 {
+    background-color: rgb(96, 180, 207);
+    color: white;
+}
+
+.btn-1:hover {
+    background-color: rgb(85, 160, 185);
+    color: white;
+}
+
+.btn-cancel {
+    background-color: darkgray;
+    border-color: aliceblue;
+    color: white;
+}
+
+.btn-cancel:hover {
+    background-color: rgb(134, 134, 134);
+    color: white;
+}

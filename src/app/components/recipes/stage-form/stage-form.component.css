@@ -1,4 +1,33 @@
-.btn-danger {
+
+
+form {
+}
+
+.card {
+    padding: 15px;
+}
+
+.btn {
+    margin-top: 10px;
+}
+
+#stage {
+    display: grid;
+}
+
+#stage .btn {
+    position: relative;
+    left: 80%;
+    bottom: 80%;
+    margin-left: 20px;
     width: 90px;
     font-size: small;
+}
+
+#cancel {
+    margin-left: 20px;
+}
+
+#delete {
+    
 }
