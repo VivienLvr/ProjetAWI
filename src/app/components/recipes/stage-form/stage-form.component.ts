@@ -24,6 +24,7 @@ export class StageFormComponent implements OnInit {
   constructor() { 
     this.stageGroup = new FormGroup({
       title: new FormControl(),
+      duration: new FormControl(),
       description: new FormControl()
     });
   }
@@ -44,16 +45,22 @@ export class StageFormComponent implements OnInit {
   }
 
   submit() {
+    // if modifying a stage
     if(this.stage) {
       this.modifStageEvent.emit([
         this.stage, // the old stage
-        new StageDescription(0,
-        this.stageGroup.get("title")!.value, [],
+        new StageDescription("",
+        this.stageGroup.get("title")!.value, 
+        this.stageGroup.get('duration')!.value,
+        [],
         this.stageGroup.get("description")!.value)]);
     }
+    // if adding a stage
     else {
-      this.addStageEvent.emit(new StageDescription(0, 
-        this.stageGroup.get("title")!.value, [],
+      this.addStageEvent.emit(new StageDescription("", 
+        this.stageGroup.get("title")!.value, 
+        this.stageGroup.get('duration')!.value,
+        [],
         this.stageGroup.get("description")!.value));
     }
   }

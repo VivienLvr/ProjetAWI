@@ -22,8 +22,11 @@ export class RecipeFormComponent implements OnInit {
   categorySelected: String = "";
   types: String[] = [];
   isNewStageVisible : boolean = false;
+  modifDuration : boolean = false;
+
+  durationGroup: FormGroup;
   stages: StageDescription[] = [
-    new StageDescription(1, "First stage", [new QuantityIngredient()], "Voici la description de l'étape")
+    new StageDescription("", "First stage", 10, [new QuantityIngredient()], "Voici la description de l'étape")
   ];
 
   constructor(private recipeService: RecipeService, private route: ActivatedRoute, private router: Router) { 
@@ -33,6 +36,10 @@ export class RecipeFormComponent implements OnInit {
       covers: new FormControl(),
       category: new FormControl(),
     });
+
+    this.durationGroup = new FormGroup({
+      duration: new FormControl()
+    })
   }
 
   ngOnInit(): void {
@@ -52,6 +59,10 @@ export class RecipeFormComponent implements OnInit {
           category: new FormControl(this.recipe.category)
         });
         this.categorySelected = this.recipe.category!;
+        console.log(this.recipe.name);
+        console.log(this.recipe.progression.title);
+        console.log(this.recipe.progression.duration);
+        
       }
     });
   }
@@ -66,7 +77,7 @@ export class RecipeFormComponent implements OnInit {
       this.recipe = new Recipe("",
         this.recipeGroup.get('name')!.value,
         this.recipeGroup.get('author')!.value,
-        this.recipeGroup.get('covers')!.value, 0, RecipeType.cake, ""
+        this.recipeGroup.get('covers')!.value, new Progression("", this.recipeGroup.get('name')!.value, [], 0, this.stages), 0, RecipeType.cake
       );
       this.submitEvent.emit("Submited")
     }
@@ -122,5 +133,11 @@ export class RecipeFormComponent implements OnInit {
     const index = this.stages.findIndex(elem => elem == stage);
     this.stages.splice(index);
     console.log("elem n°" + index + " deleted");
+  }
+
+  modifyDuration() {
+    if(this.recipe) {
+      this.recipe!.progression.duration = this.durationGroup.get('duration')?.value;
+    }
   }
 }

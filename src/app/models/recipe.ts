@@ -12,14 +12,15 @@ export class Recipe {
     covers : number;
     priceCoef? : number;
     category? : RecipeType;
-    progression? : string;
+    progression : Progression;
 
     constructor(id: string, name : String,
         author : String,
         covers : number,
+        progression : Progression,
         priceCoef? : number,
-        category? : RecipeType,
-        progression? : string) {
+        category? : RecipeType
+        ) {
             this.id = id;
             this.name = name;
             this.author = author;

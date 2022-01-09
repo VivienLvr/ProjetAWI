@@ -2,10 +2,7 @@
     
     
     <div>
-        Etape {{ index }} - <div style="font-size: larger;"></div>
-        <h5>
-            {{ stage.title }}
-        </h5>
+        Etape n° {{ index }}  <h5>{{ stage.title }} ({{ stage.duration }} min)</h5>
         <div *ngIf="stage.description">
             {{ stage.description }}
         </div>
@@ -29,6 +26,10 @@
         <div class="col-md-3" style="position: rigth;">
             <label for="title" class="form-label">Nom de l'étape</label>
             <input type="text" class="form-control" formControlName="title" required>
+        </div>
+        <div class="col-md-3" style="position: rigth;">
+            <label for="duration" class="form-label">Durée</label>
+            <input type="number" class="form-control" formControlName="duration" required>
         </div>
         <div class="col-12">
             <label for="description" class="form-label">Description (optionnelle)</label>
