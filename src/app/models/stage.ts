@@ -1,10 +1,10 @@
 import { Ingredient } from "./ingredient";
 
 export class QuantityIngredient {
-    ingredient : Ingredient;
-    quantity : number;
+    ingredient? : Ingredient;
+    quantity? : number;
 
-    constructor(i: Ingredient, qty: number) {
+    constructor(i?: Ingredient, qty?: number) {
         this.ingredient = i;
         this.quantity = qty;
     }
