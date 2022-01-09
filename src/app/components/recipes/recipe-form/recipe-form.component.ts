@@ -30,7 +30,8 @@ export class RecipeFormComponent implements OnInit {
     this.recipeGroup = new FormGroup({
       name: new FormControl(),
       author: new FormControl(),
-      covers: new FormControl()
+      covers: new FormControl(),
+      category: new FormControl(),
     });
   }
 
@@ -47,7 +48,8 @@ export class RecipeFormComponent implements OnInit {
         this.recipeGroup = new FormGroup({
           name: new FormControl(this.recipe.name),
           author: new FormControl(this.recipe.author),
-          covers: new FormControl(this.recipe.covers)
+          covers: new FormControl(this.recipe.covers),
+          category: new FormControl(this.recipe.category)
         });
         this.categorySelected = this.recipe.category!;
       }
@@ -55,7 +57,6 @@ export class RecipeFormComponent implements OnInit {
   }
 
   ngOnChanges(): void {
-    
   }
 
   
@@ -82,11 +83,9 @@ export class RecipeFormComponent implements OnInit {
       
       switch(msg) {
         case 'addSuccess':
-          console.log("case addSuccess");
           this.addSuccess.emit("success")
           break;
         case 'modifSuccess':
-          console.log("case modifSuccess");
           this.modifSuccess.emit("success")
           break;
       }
@@ -117,5 +116,11 @@ export class RecipeFormComponent implements OnInit {
     const newStage = stages[1];
     const index = this.stages.findIndex(elem => elem == oldStage);
     this.stages[index] = newStage;
+  }
+
+  deleteStage(stage: StageDescription) {
+    const index = this.stages.findIndex(elem => elem == stage);
+    this.stages.splice(index);
+    console.log("elem n°" + index + " deleted");
   }
 }

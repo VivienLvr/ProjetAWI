@@ -1,5 +1,5 @@
-<div class="card" *ngIf="stage" id="stage">
-    <h4 *ngIf="stage && !isModify">Modifier l'étape</h4>
+<div class="card" *ngIf="stage && !isModify" id="stage">
+    
     
     <div>
         Etape {{ index }} - <div style="font-size: larger;"></div>
@@ -12,14 +12,19 @@
         <div *ngIf="!stage.description" style="font-style: italic; font-size: small;">
             Pas de description pour cette étape
         </div>
-        <button class="btn btn-1" (click)="selectToModify()">Modifier</button>
-        <button class="btn btn-danger" id="delete" (click)="delete()">Supprimer</button>
+        <button class="btn btn-1" type="button" (click)="selectToModify()">Modifier</button>
+        <button class="btn btn-danger" type="button" id="delete" (click)="delete()">Supprimer</button>
+        <div *ngIf="confirmDelete" style="display: inline">
+            <button id="annuler" type="button" (click)="this.confirmDelete = false">Annuler</button>
+            <p style="float: right;" class="alert alert-danger">Êtes-vous sûr de vouloir supprimer cette étape ? Cette action est irreversible</p>
+        </div>
     </div>
 </div>
 
 <!-- Formulaire d'ajout d'étape -->
 <div *ngIf="!stage || isModify" class="card">
     <h4 *ngIf="!stage">Ajout d'une étape</h4>
+    <h4 *ngIf="stage && isModify">Modifier l'étape n°{{ index }}</h4>
     <form class="row g-3" [formGroup]="stageGroup" (ngSubmit)="submit()">
         <div class="col-md-3" style="position: rigth;">
             <label for="title" class="form-label">Nom de l'étape</label>

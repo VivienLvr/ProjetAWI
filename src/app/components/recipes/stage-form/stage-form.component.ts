@@ -12,19 +12,20 @@ import { StageDescription } from 'src/app/models/stage-description';
 export class StageFormComponent implements OnInit {
   @Input() stage?: StageDescription;
   @Input() index?: number;
-  @Output() deleteEvent: EventEmitter<Stage> = new EventEmitter<Stage>();
+  @Output() deleteStageEvent: EventEmitter<StageDescription> = new EventEmitter<StageDescription>();
   @Output() cancelEvent: EventEmitter<void> = new EventEmitter<void>();
   @Output() addStageEvent: EventEmitter<StageDescription> = new EventEmitter<StageDescription>();
   @Output() modifStageEvent: EventEmitter<StageDescription[]> = new EventEmitter<StageDescription[]>();
   stageGroup : FormGroup;
   labelButton: String = "";
   isModify: boolean = false;
+  confirmDelete: boolean = false;
+  
   constructor() { 
     this.stageGroup = new FormGroup({
       title: new FormControl(),
       description: new FormControl()
-    }
-    );
+    });
   }
 
   ngOnInit(): void {
@@ -33,7 +34,13 @@ export class StageFormComponent implements OnInit {
   }
 
   delete() {
-    this.deleteEvent.emit(this.stage)
+    console.log("stage delete button clicked")
+    if(this.confirmDelete) {
+      this.deleteStageEvent.emit(this.stage)
+    }
+    else {
+      this.confirmDelete = true;
+    }
   }
 
   submit() {

@@ -33,7 +33,7 @@
         <h3>Progression</h3>
         <br>
         <app-stage-form *ngIf="isNewStageVisible" (addStageEvent)="addStage($event)" (cancelEvent)="hideNewStage()"></app-stage-form>
-        <app-stage-form *ngFor="let stage of stages" (modifStageEvent)="modifStage($event)" [stage]="stage" [index]="stages.indexOf(stage)"></app-stage-form>
+        <app-stage-form *ngFor="let stage of stages" (modifStageEvent)="modifStage($event)" (deleteStageEvent)="deleteStage($event)" [stage]="stage" [index]="stages.indexOf(stage)"></app-stage-form>
 
         <button class="btn btn-1" id="btn-add" type="button" (click)="displayNewStage()">Ajouter une étape</button>
     </div>
