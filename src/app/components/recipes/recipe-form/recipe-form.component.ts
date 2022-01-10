@@ -39,7 +39,7 @@ export class RecipeFormComponent implements OnInit {
 
     this.durationGroup = new FormGroup({
       duration: new FormControl()
-    })
+    });
   }
 
   ngOnInit(): void {
@@ -47,7 +47,10 @@ export class RecipeFormComponent implements OnInit {
     let id = this.route.snapshot.paramMap.get('id');
     this.recipeService.getRecipes().subscribe(recipes => {
       recipes.forEach(recipe => {
-        if(recipe.id == id) { this.recipe = recipe }
+        if(recipe.id == id) { 
+          this.recipe = recipe 
+          this.stages = recipe.progression.stages;
+        }
       })
 
       if(this.recipe) {
@@ -62,7 +65,11 @@ export class RecipeFormComponent implements OnInit {
         console.log(this.recipe.name);
         console.log(this.recipe.progression.title);
         console.log(this.recipe.progression.duration);
-        
+        if(this.recipe.progression) {
+          this.durationGroup = new FormGroup({
+            duration: new FormControl(this.recipe.progression.duration)
+          })
+        }
       }
     });
   }
@@ -137,7 +144,11 @@ export class RecipeFormComponent implements OnInit {
 
   modifyDuration() {
     if(this.recipe) {
-      this.recipe!.progression.duration = this.durationGroup.get('duration')?.value;
+      this.recipe!.progression.duration = this.durationGroup.get('duration')!.value;
     }
+  }
+
+  displayDurationForm() {
+    this.modifDuration = true;
   }
 }

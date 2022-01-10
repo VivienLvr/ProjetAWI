@@ -13,10 +13,10 @@ export class QuantityIngredient {
 export class Stage {
     id : string;
     title : String;
-    duration?: number; // Stage duration in minutes
-    ingredients : Array<QuantityIngredient>;
+    duration: number; // Stage duration in minutes
+    ingredients? : Array<QuantityIngredient>;
 
-    constructor(id: string, title: String, duration: number, ingredients: Array<QuantityIngredient>) {
+    constructor(id: string, title: String, duration: number, ingredients?: Array<QuantityIngredient>) {
         this.id = id;
         this.title = title;
         this.duration = duration;
@@ -25,6 +25,6 @@ export class Stage {
 
     public addIngredient(i: Ingredient, q: number): void {
         let qty = new QuantityIngredient(i, q);
-        this.ingredients.push(qty);
+        this.ingredients?.push(qty);
     }
 }
