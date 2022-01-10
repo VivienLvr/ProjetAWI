@@ -14,9 +14,17 @@ export class RecipeItemComponent implements OnInit {
   @Input() recipe?: Recipe;
   @Output() modifyEvent: EventEmitter<Recipe> = new EventEmitter<Recipe>();
   confirmDelete: boolean = false;
+  displayApercu: boolean = false;
   constructor(private recipeService: RecipeService, private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  displayApercuClicked() {
+    if(this.displayApercu) {
+      this.displayApercu = false;
+    }
+    else { this.displayApercu = true; }
   }
 
   download(): void {
