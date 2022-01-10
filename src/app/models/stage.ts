@@ -13,6 +13,7 @@ export class QuantityIngredient {
 export class Stage {
     id : string;
     title : String;
+    
     duration: number; // Stage duration in minutes
     ingredients? : Array<QuantityIngredient>;
 

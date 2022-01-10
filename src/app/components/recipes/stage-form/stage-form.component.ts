@@ -51,7 +51,7 @@ export class StageFormComponent implements OnInit {
         this.stage, // the old stage
         new StageDescription("",
         this.stageGroup.get("title")!.value, 
-        this.stageGroup.get('duration')!.value,
+        this.stageGroup.get('duration')!.value, 0,
         [],
         this.stageGroup.get("description")!.value)]);
     }
@@ -59,7 +59,7 @@ export class StageFormComponent implements OnInit {
     else {
       this.addStageEvent.emit(new StageDescription("", 
         this.stageGroup.get("title")!.value, 
-        this.stageGroup.get('duration')!.value,
+        this.stageGroup.get('duration')!.value, 0,
         [],
         this.stageGroup.get("description")!.value));
     }

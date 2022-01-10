@@ -26,7 +26,7 @@ export class RecipeFormComponent implements OnInit {
 
   durationGroup: FormGroup;
   stages: StageDescription[] = [
-    new StageDescription("", "First stage", 10, [new QuantityIngredient()], "Voici la description de l'étape")
+    new StageDescription("", "First stage", 10, 0, [new QuantityIngredient()], "Voici la description de l'étape")
   ];
 
   constructor(private recipeService: RecipeService, private route: ActivatedRoute, private router: Router) { 

@@ -63,16 +63,16 @@ export class RecipesListComponent implements OnInit {
     ingredients2.push(new QuantityIngredient(new Ingredient("", "Lait", IngredientType.epicerie , Unit.litre, 0, 1, false), 0.5))
     ingredients2.push(new QuantityIngredient(new Ingredient("", "Jaunes", IngredientType.epicerie , Unit.piece, 0, 1, false), 4))
 
-    let stages: Stage[] = [];
-    stages.push(new StageDescription("", "Mise en place du poste de travail", 5))
-    stages.push(new StageDescription("", "Réaliser les pesées", 10))
-    stages.push(new StageDescription("", "Réaliser la base du Saint-Honoré", 30, ingredients1, 
+    let stages: StageDescription[] = [];
+    stages.push(new StageDescription("", "Mise en place du poste de travail", 1, 5))
+    stages.push(new StageDescription("", "Réaliser les pesées", 2,  10))
+    stages.push(new StageDescription("", "Réaliser la base du Saint-Honoré",3, 30, ingredients1, 
     `
     - Réaliser la pate à choux
     - Découper un disque de pate feuilletée, le piquer des deux cotés
     ...`
 ))
-    stages.push(new StageDescription("", "Réaliser la crème Chiboust", 30, ingredients2, 
+    stages.push(new StageDescription("", "Réaliser la crème Chiboust", 4, 30, ingredients2, 
     `- Réaliser une crème patissière, la coller à l'aide de la gélatine
     `))
     let recipe = new Recipe("", "Saint-Honoré", "Pâtissier", 10, new Progression("", "Saint-Honoré", [], 95, stages))
