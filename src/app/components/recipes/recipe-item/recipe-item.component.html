@@ -16,9 +16,36 @@
             <div id = subtitle class = "half">DENREES</div>
             <div id = subtitle class = "twenty">UNITES</div>
             <div id = subtitle class = "thirty">QUANTITES</div>
-            <div id = text class = "half minsize"></div> 
-            <div id = text class = "twenty minsize"></div>
-            <div id = text class = "thirty minsize"></div>   
+            <div id = text class = "half minsize">
+                <div *ngIf="recipe.progression">
+                    <ul *ngFor="let stage of recipe.progression.stages">
+                        <div *ngIf="stage.ingredients" class="bold">{{stage.title}}</div>
+                        <li *ngFor="let ingredient of stage.ingredients">
+                            <div *ngIf="ingredient.ingredient">{{ingredient.ingredient.name}}</div>
+                        </li>
+                    </ul>
+                </div>
+            </div> 
+            <div id = text class = "twenty minsize">
+                <div *ngIf="recipe.progression">
+                    <div *ngFor="let stage of recipe.progression.stages">
+                        <div *ngIf="stage.ingredients"><br><br></div>
+                        <div *ngFor="let ingredient of stage.ingredients">
+                            <div *ngIf="ingredient.ingredient">{{ingredient.ingredient.unit}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id = text class = "thirty minsize">
+                <div *ngIf="recipe.progression">
+                    <div *ngFor="let stage of recipe.progression.stages">
+                        <div *ngIf="stage.ingredients"><br><br></div>
+                        <div *ngFor="let ingredient of stage.ingredients">
+                            <div *ngIf="ingredient.ingredient">{{ingredient.quantity}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>   
             <div id = subtitle class = "full">MATERIELS SPECIFIQUES</div>
             <div id = text class = "full minsize"></div>
         </div>
@@ -31,9 +58,30 @@
             <div id = subtitle class = "fifteen">N° PHASE</div>
             <div id = subtitle class = "seventy">TECHNIQUES DE REALISATION</div>
             <div id = subtitle class = "fifteen">DUREE</div>
-            <div id = text class = "fifteen minsize"></div> 
-            <div id = text class = "seventy minsize"></div>
-            <div id = text class = "fifteen minsize"></div>
+            <div id = text class = "fifteen minsize">
+                <div *ngIf="recipe.progression">
+                    <div *ngFor="let stage of recipe.progression.stages" class="bold">
+                        {{stage.phase}}
+                        <div *ngIf="stage.description"><br><br></div>
+                    </div>
+                </div>
+            </div> 
+            <div id = text class = "seventy minsize">
+                <div *ngIf="recipe.progression">
+                    <div *ngFor="let stage of recipe.progression.stages">
+                        <div class="bold">{{stage.title}}</div>
+                            {{stage.description}}
+                    </div>
+                </div>
+            </div>
+            <div id = text class = "fifteen minsize">
+                <div *ngIf="recipe.progression">
+                    <div *ngFor="let stage of recipe.progression.stages">
+                        {{stage.duration}}'
+                        <div *ngIf="stage.description"><br><br></div>
+                    </div>
+                </div>
+            </div>
             <div id = subtitle class = "full">MATERIELS DE DRESSAGE</div>
             <div id = text class = "full minsize"></div>
         </div>
