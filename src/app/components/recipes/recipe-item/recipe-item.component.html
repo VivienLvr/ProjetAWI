@@ -3,12 +3,16 @@
     <button (click)="download()" class="btn btn-1">Télécharger le pdf</button>
     <button class="btn btn-danger" id="delete" (click)="delete()">Supprimer</button>
     <button class="btn btn-1" id="modif" (click)="modify()">Modifier</button>
+    <button class="btn btn-1" id="modif" (click)="displayApercuClicked()">
+        <div *ngIf="displayApercu">Fermer aperçu</div>    
+        <div *ngIf="!displayApercu">Afficher aperçu</div>
+    </button>
     <br><br>
     <div *ngIf="confirmDelete" style="display: inline">
         <button id="annuler" (click)="this.confirmDelete = false">Annuler</button>
         <p style="float: right;" class="alert alert-danger">Êtes-vous sûr de vouloir supprimer cet ingédient ? Cette action est irreversible</p>
     </div>
-    <div id = "pdf">
+    <div id = "pdf" *ngIf="displayApercu">
         <div id = title>FICHE TECHNIQUE</div>
         <div id = leftPart>
             <div id = subtitle class = "full">INTITULE</div>
@@ -18,14 +22,19 @@
             <div id = subtitle class = "thirty">QUANTITES</div>
             <div id = text class = "half minsize">
                 <div *ngIf="recipe.progression">
+<<<<<<< HEAD
                     <ul *ngFor="let stage of recipe.progression.stages">
                         <div *ngIf="stage.ingredients" class="bold">{{stage.title}}</div>
+=======
+                    <ul *ngFor="let stage of recipe.progression.stages">{{stage.title}}
+>>>>>>> 04cb362f478cb5edec2faf91e54b8472484e1576
                         <li *ngFor="let ingredient of stage.ingredients">
                             <div *ngIf="ingredient.ingredient">{{ingredient.ingredient.name}}</div>
                         </li>
                     </ul>
                 </div>
             </div> 
+<<<<<<< HEAD
             <div id = text class = "twenty minsize">
                 <div *ngIf="recipe.progression">
                     <div *ngFor="let stage of recipe.progression.stages">
@@ -46,6 +55,10 @@
                     </div>
                 </div>
             </div>   
+=======
+            <div id = text class = "twenty minsize"></div>
+            <div id = text class = "thirty minsize"></div>   
+>>>>>>> 04cb362f478cb5edec2faf91e54b8472484e1576
             <div id = subtitle class = "full">MATERIELS SPECIFIQUES</div>
             <div id = text class = "full minsize"></div>
         </div>
