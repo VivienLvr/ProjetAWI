@@ -30,12 +30,10 @@
     <div id="progression" *ngIf="recipe && recipe.progression">
         <br>
         <br>
-        <h3>Progression</h3> durée {{ recipe.progression.duration }} minutes <button class="link-primary" id="modifDuration" (click)="this.modifDuration = true">modifier</button>
+        <h3>Progression</h3> durée {{ recipe.progression.duration }} minutes <button class="link-primary" id="modifDuration" (click)="displayDurationForm()">modifier</button>
         <form *ngIf="modifDuration" [formGroup]="durationGroup" (ngSubmit)="modifyDuration()">
-            <div class="input-group">
-                <input class="form-control mr-sm-2" type="number" placeholder="" class="form-control" formControlName="duration">
-                <button class="btn" type="submit" id="search">Modifier</button>
-            </div>
+            <input class="form-control mr-sm-2" type="number" class="form-control" formControlName="duration" required>
+            <button class="btn" type="submit">Modifier</button>
         </form>
         <br>
         <app-stage-form *ngIf="isNewStageVisible" (addStageEvent)="addStage($event)" (cancelEvent)="hideNewStage()"></app-stage-form>
