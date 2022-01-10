@@ -22,19 +22,14 @@
             <div id = subtitle class = "thirty">QUANTITES</div>
             <div id = text class = "half minsize">
                 <div *ngIf="recipe.progression">
-<<<<<<< HEAD
                     <ul *ngFor="let stage of recipe.progression.stages">
                         <div *ngIf="stage.ingredients" class="bold">{{stage.title}}</div>
-=======
-                    <ul *ngFor="let stage of recipe.progression.stages">{{stage.title}}
->>>>>>> 04cb362f478cb5edec2faf91e54b8472484e1576
                         <li *ngFor="let ingredient of stage.ingredients">
                             <div *ngIf="ingredient.ingredient">{{ingredient.ingredient.name}}</div>
                         </li>
                     </ul>
                 </div>
             </div> 
-<<<<<<< HEAD
             <div id = text class = "twenty minsize">
                 <div *ngIf="recipe.progression">
                     <div *ngFor="let stage of recipe.progression.stages">
@@ -55,10 +50,6 @@
                     </div>
                 </div>
             </div>   
-=======
-            <div id = text class = "twenty minsize"></div>
-            <div id = text class = "thirty minsize"></div>   
->>>>>>> 04cb362f478cb5edec2faf91e54b8472484e1576
             <div id = subtitle class = "full">MATERIELS SPECIFIQUES</div>
             <div id = text class = "full minsize"></div>
         </div>
