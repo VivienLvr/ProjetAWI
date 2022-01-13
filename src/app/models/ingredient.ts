@@ -1,5 +1,7 @@
 export enum IngredientType {
     meat = 'Viande',
+    fish = 'Poissons et crustacés',
+    cremerie = "Crèmerie",
     vegetable = "Légume",
     fruit = "Fruit",
     epicerie = "Epicerie"
@@ -9,7 +11,8 @@ export enum Unit {
     gramm = 'g',
     litre = 'l',
     piece = 'Pièce',
-    kg = 'kg'
+    kg = 'kg',
+    botte = 'botte'
 }
 
 export class Ingredient {

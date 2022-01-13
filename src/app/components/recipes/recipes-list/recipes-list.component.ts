@@ -45,6 +45,7 @@ export class RecipesListComponent implements OnInit {
   search() {
     this.recipeService.getRecipes().subscribe(recipes => {
       this.recipes = recipes;
+      recipes.push(this.SaintHonore)
       const filterName = this.searchGroup.get('search')!.value.toLowerCase();
       console.log(filterName);
       this.recipes = this.recipes.filter(recipe => recipe.name.toLowerCase().includes(filterName))
