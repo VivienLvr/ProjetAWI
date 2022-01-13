@@ -28,12 +28,16 @@ export class RecipeItemComponent implements OnInit {
   }
 
   download(): void {
-    const element = document.getElementById('pdf');
-    var opt = {
-      margin: 1,
-      filename: `${this.recipe!.name}.pdf`
-    };
-    html2pdf().from(element).set(opt).save();
+    if(this.recipe) {
+      const element = document.getElementById(this.recipe.name.toString());
+      //element?.classList.remove('hide')
+      this.displayApercu = true;
+      var opt = {
+        margin: 1,
+        filename: `${this.recipe!.name}.pdf`
+      };
+      html2pdf().from(element).set(opt).save();
+    }
   }
 
   modify() {
@@ -53,7 +57,5 @@ export class RecipeItemComponent implements OnInit {
       this.confirmDelete = true;
     }
   }
-
-  
 
 }

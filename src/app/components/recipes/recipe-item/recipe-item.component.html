@@ -12,7 +12,7 @@
         <button id="annuler" (click)="this.confirmDelete = false">Annuler</button>
         <p style="float: right;" class="alert alert-danger">Êtes-vous sûr de vouloir supprimer cet ingédient ? Cette action est irreversible</p>
     </div>
-    <div id = "pdf" [ngClass]="{hide : !this.displayApercu}">
+    <div [ngClass]="{hide : !this.displayApercu}" attr.id="{{ recipe.name }}">
         <div id = title>FICHE TECHNIQUE</div>
         <div id = leftPart>
             <div id = subtitle class = "full">INTITULE</div>
